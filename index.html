@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">ISHITA's Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="#home" class="scroll-link">Home</a></li>
+                    <li><a href="#about" class="scroll-link">About Me</a></li>
+                    <li><a href="#Project" class="scroll-link">Project</a></li>
+                    <li><a href="#contact" class="scroll-link">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HOME SECTION -->
+        <section id="home" class="firstSection">
+            <div class="leftsection">
+                <h3>Hello!!<br />I am ISHITA AGRAWAL</h3>
+                <div class="typing-box">I am into <span id="element"></span></div>
+            </div>
+            <div class="rightsection"><img src="GirlImage.png" style="border-radius:50px;" height="450px" width="400px">
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="about">
+            <div class="line about-title">About Me</div>
+            <div class="line">I’m currently pursuing an Integrated MCA at IIPS-DAVV, driven by a strong passion for
+                technology
+                and innovation.</div>
+            <div class="line">As a curious technophile, I explore domains like software development, cyber security , web tech, cloud,
+                and AI.
+            </div>
+            <div class="line">I’m always eager to expand my skills and contribute to impactful real-world solutions.
+            </div>
+            <div class="line">I'm currently open to internships and opportunities to grow as a developer.</div>
+        </section>
+
+
+        <!-- PROJECTS -->
+        <section id="Project" class="project">
+            <div class="section-heading">Project</div>
+
+            <div class="project-box"><a href="Cultural-India/index.html" target="_blank">India Heritage Project</a>
+            </div>
+            <div class="project-box"><a href="../TTT.html" target="_blank">Tic Tac Toe</a></div>
+            <div class="project-box"><a href="https://github.com/Ishita-Agrawal05/quiz" target="_blank">Quiz</a></div>
+        </section>
+
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="conicon">
+            <a href="https://www.linkedin.com/in/ishita-agrawal-32a654279/" target="_blank">
+                <i class="fa-brands fa-linkedin" style="color: #0077b5;"></i></a>
+            <a href="https://github.com/Ishita-Agrawal05" target="_blank"> <i class="fa-brands fa-github"
+                    style="color: #000000;"></i></a>
+        </div>
+        <div class="mainicon"> <i class="fa-solid fa-phone fa-beat" style="color: #ff00dd;"></i> 8602216919 <br> <img
+                src="Gmail_icon_(2020).svg " height="20px" width="20px"> ishuu2020@gmail.com </div>
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        new Typed('#element', {
+            strings: ['Front end developer', 'Video editor'],
+            typeSpeed: 60,
+        });
+
+        const lines = document.querySelectorAll('.about .line');
+        let hasAnimated = false;
+
+        function animateAbout() {
+            lines.forEach((line, index) => {
+                setTimeout(() => line.classList.add('active'), index * 500);
+            });
+        }
+
+        function resetAbout() {
+            lines.forEach(line => line.classList.remove('active'));
+        }
+
+        document.querySelectorAll('.scroll-link').forEach(link => {
+            link.addEventListener('click', function () {
+                if (this.getAttribute('href') === '#about') {
+                    resetAbout();
+                    setTimeout(animateAbout, 300);
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection.getBoundingClientRect().top < window.innerHeight - 100 && !hasAnimated) {
+                animateAbout();
+                hasAnimated = true;
+            }
+        });
+    </script>
+</body>
+
+</html>
